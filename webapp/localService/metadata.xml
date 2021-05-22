@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://d1r.devpp.network.shc:8443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='S4H')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://d1r.devpp.network.shc:8443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='S4H')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://d1r.devpp.network.shc:8443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='S4H')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://d1r.devpp.network.shc:8443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='S4H')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://d1r.devpp.network.shc:8443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='S4H')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://d1r.devpp.network.shc:8443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='S4H')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://d1r.devpp.network.shc:8443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='S4H')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://d1r.devpp.network.shc:8443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='S4H')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://d1r.devpp.network.shc:8443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='S4H')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZZ1_R2R_I386A_LOAD_DAT_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_CurrencyType" sap:label="Currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Currency"/>
+                </Key>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="Currency_Text" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="Currency_Text" Type="Edm.String" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Decimals" Type="Edm.Byte" sap:label="Decimal Places" sap:quickinfo="Number of decimal places"/>
+                <Property Name="CurrencyISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Currency Code"/>
+                <Property Name="AlternativeCurrencyKey" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Alternative Key"/>
+                <Property Name="IsPrimaryCurrencyForISOCrcy" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Primary" sap:quickinfo="Primary SAP Currency Code for ISO Code"/>
+            </EntityType>
+            <EntityType Name="I_CurrencyTextType" sap:label="Currency Text" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="Currency"/>
+                </Key>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="to_Language/Language_Text" sap:label="Language Key" sap:value-list="standard"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="to_Currency/Currency_Text" sap:label="Currency" sap:quickinfo="Currency Key" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="CurrencyName" Type="Edm.String" MaxLength="40" sap:label="Description"/>
+                <Property Name="CurrencyShortName" Type="Edm.String" MaxLength="15" sap:label="Short text"/>
+                <NavigationProperty Name="to_Currency" Relationship="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_953AD32A42F8CC110D2FDAB7C5274BF1" FromRole="FromRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1" ToRole="ToRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"/>
+                <NavigationProperty Name="to_Language" Relationship="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_2FB7ED57453D0981D884820F302AC05F" FromRole="FromRole_assoc_2FB7ED57453D0981D884820F302AC05F" ToRole="ToRole_assoc_2FB7ED57453D0981D884820F302AC05F"/>
+            </EntityType>
+            <EntityType Name="I_LanguageType" sap:label="Language" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Language_Text" sap:label="Language Key"/>
+                <Property Name="Language_Text" Type="Edm.String" MaxLength="16" sap:label="Name" sap:quickinfo="Name of Language" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LanguageISOCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Language Code" sap:quickinfo="2-Character SAP Language Code"/>
+            </EntityType>
+            <EntityType Name="P_Scbo_UserType" sap:label="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="description" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+            </EntityType>
+            <EntityType Name="ZZ1_R2R_I386A_LOAD_DATType" sap:label="ZZ1_R2R_I386A_LOAD_DATA" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_CreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_CreatedByUser_Text" sap:label="Created By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_LastChangedByUser_Text" sap:label="Last Changed By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SPMON" Type="Edm.String" MaxLength="6" sap:label="SPMON"/>
+                <Property Name="SUID" Type="Edm.String" MaxLength="20" sap:label="SUID"/>
+                <Property Name="FILE_ID" Type="Edm.String" MaxLength="14" sap:label="FILE_ID"/>
+                <Property Name="RECORD_ID" Type="Edm.String" MaxLength="16" sap:label="REC_ID"/>
+                <Property Name="REC_TYPE" Type="Edm.String" MaxLength="2" sap:label="REC_TYPE"/>
+                <Property Name="POINTSTYPE" Type="Edm.String" MaxLength="10" sap:label="POINT_TYPE"/>
+                <Property Name="ORDER_SUBTYPE" Type="Edm.String" MaxLength="12" sap:label="SUBTYPE"/>
+                <Property Name="RATEWAC" Type="Edm.String" MaxLength="14" sap:label="WACRATE"/>
+                <Property Name="POINTSQUANTITY" Type="Edm.String" MaxLength="11" sap:label="POINTS_QTY"/>
+                <Property Name="AMOUNT_V" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="AMOUNT_C" sap:label="AMOUNT"/>
+                <Property Name="AMOUNT_C" Type="Edm.String" MaxLength="5" sap:text="AMOUNT_C_Text" sap:label="AMOUNT" sap:value-list="standard" sap:semantics="currency-code"/>
+                <Property Name="AMOUNT_C_Text" Type="Edm.String" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="UNITS" Type="Edm.String" MaxLength="11" sap:label="UNITS"/>
+                <Property Name="OUTLETNUMBER" Type="Edm.String" MaxLength="5" sap:label="OUTLET"/>
+                <Property Name="PAYER" Type="Edm.String" MaxLength="12" sap:label="PAYER"/>
+                <Property Name="WHODOWEPAY" Type="Edm.String" MaxLength="12" sap:label="RECEIVER"/>
+                <Property Name="COSTCENTER" Type="Edm.String" MaxLength="2" sap:label="KOSTL"/>
+                <Property Name="REGION" Type="Edm.String" MaxLength="20" sap:label="REGIO"/>
+                <Property Name="DESCRIPTION" Type="Edm.String" MaxLength="80" sap:label="DESCR"/>
+                <Property Name="STATUS" Type="Edm.String" MaxLength="40" sap:label="STATUS"/>
+                <Property Name="ERRORLOG" Type="Edm.String" MaxLength="100" sap:label="ERRORLOG"/>
+                <NavigationProperty Name="to_AMOUNT" Relationship="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_3C21B854FCAED6380A4CC8C95E5688EC" FromRole="FromRole_assoc_3C21B854FCAED6380A4CC8C95E5688EC" ToRole="ToRole_assoc_3C21B854FCAED6380A4CC8C95E5688EC"/>
+                <NavigationProperty Name="to_SAPSysAdminDataChangeUser" Relationship="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_E78F9FD13DA010A472FD4B0A3621B1C2" FromRole="FromRole_assoc_E78F9FD13DA010A472FD4B0A3621B1C2" ToRole="ToRole_assoc_E78F9FD13DA010A472FD4B0A3621B1C2"/>
+                <NavigationProperty Name="to_SAPSysAdminDataCreateUser" Relationship="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_E9BF378AF32CC73DE3F8916499942370" FromRole="FromRole_assoc_E9BF378AF32CC73DE3F8916499942370" ToRole="ToRole_assoc_E9BF378AF32CC73DE3F8916499942370"/>
+                <NavigationProperty Name="to__AMOUNT" Relationship="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_891F9BBB648A759AA7BE1550412BF6B6" FromRole="FromRole_assoc_891F9BBB648A759AA7BE1550412BF6B6" ToRole="ToRole_assoc_891F9BBB648A759AA7BE1550412BF6B6"/>
+            </EntityType>
+            <Association Name="assoc_3C21B854FCAED6380A4CC8C95E5688EC" sap:content-version="1">
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.ZZ1_R2R_I386A_LOAD_DATType" Multiplicity="1" Role="FromRole_assoc_3C21B854FCAED6380A4CC8C95E5688EC"/>
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_3C21B854FCAED6380A4CC8C95E5688EC"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_3C21B854FCAED6380A4CC8C95E5688EC">
+                        <PropertyRef Name="Currency"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_3C21B854FCAED6380A4CC8C95E5688EC">
+                        <PropertyRef Name="AMOUNT_C"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_E78F9FD13DA010A472FD4B0A3621B1C2" sap:content-version="1">
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.ZZ1_R2R_I386A_LOAD_DATType" Multiplicity="1" Role="FromRole_assoc_E78F9FD13DA010A472FD4B0A3621B1C2"/>
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_E78F9FD13DA010A472FD4B0A3621B1C2"/>
+            </Association>
+            <Association Name="assoc_E9BF378AF32CC73DE3F8916499942370" sap:content-version="1">
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.ZZ1_R2R_I386A_LOAD_DATType" Multiplicity="1" Role="FromRole_assoc_E9BF378AF32CC73DE3F8916499942370"/>
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_E9BF378AF32CC73DE3F8916499942370"/>
+            </Association>
+            <Association Name="assoc_891F9BBB648A759AA7BE1550412BF6B6" sap:content-version="1">
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.ZZ1_R2R_I386A_LOAD_DATType" Multiplicity="1" Role="FromRole_assoc_891F9BBB648A759AA7BE1550412BF6B6"/>
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_CurrencyTextType" Multiplicity="*" Role="ToRole_assoc_891F9BBB648A759AA7BE1550412BF6B6"/>
+            </Association>
+            <Association Name="assoc_2FB7ED57453D0981D884820F302AC05F" sap:content-version="1">
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_CurrencyTextType" Multiplicity="1" Role="FromRole_assoc_2FB7ED57453D0981D884820F302AC05F"/>
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_LanguageType" Multiplicity="0..1" Role="ToRole_assoc_2FB7ED57453D0981D884820F302AC05F"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_2FB7ED57453D0981D884820F302AC05F">
+                        <PropertyRef Name="Language"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_2FB7ED57453D0981D884820F302AC05F">
+                        <PropertyRef Name="Language"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_953AD32A42F8CC110D2FDAB7C5274BF1" sap:content-version="1">
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_CurrencyTextType" Multiplicity="1" Role="FromRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"/>
+                <End Type="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_CurrencyType" Multiplicity="1" Role="ToRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1">
+                        <PropertyRef Name="Currency"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1">
+                        <PropertyRef Name="Currency"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZZ1_R2R_I386A_LOAD_DAT_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_Currency" EntityType="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_CurrencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_CurrencyText" EntityType="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_CurrencyTextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Language" EntityType="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_LanguageType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="P_Scbo_User" EntityType="ZZ1_R2R_I386A_LOAD_DAT_CDS.P_Scbo_UserType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZZ1_R2R_I386A_LOAD_DAT" EntityType="ZZ1_R2R_I386A_LOAD_DAT_CDS.ZZ1_R2R_I386A_LOAD_DATType" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_2FB7ED57453D0981D884820F302AC05F" Association="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_2FB7ED57453D0981D884820F302AC05F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_CurrencyText" Role="FromRole_assoc_2FB7ED57453D0981D884820F302AC05F"/>
+                    <End EntitySet="I_Language" Role="ToRole_assoc_2FB7ED57453D0981D884820F302AC05F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E9BF378AF32CC73DE3F8916499942370" Association="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_E9BF378AF32CC73DE3F8916499942370" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZZ1_R2R_I386A_LOAD_DAT" Role="FromRole_assoc_E9BF378AF32CC73DE3F8916499942370"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_E9BF378AF32CC73DE3F8916499942370"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E78F9FD13DA010A472FD4B0A3621B1C2" Association="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_E78F9FD13DA010A472FD4B0A3621B1C2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZZ1_R2R_I386A_LOAD_DAT" Role="FromRole_assoc_E78F9FD13DA010A472FD4B0A3621B1C2"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_E78F9FD13DA010A472FD4B0A3621B1C2"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_953AD32A42F8CC110D2FDAB7C5274BF1" Association="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_953AD32A42F8CC110D2FDAB7C5274BF1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_CurrencyText" Role="FromRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"/>
+                    <End EntitySet="I_Currency" Role="ToRole_assoc_953AD32A42F8CC110D2FDAB7C5274BF1"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_891F9BBB648A759AA7BE1550412BF6B6" Association="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_891F9BBB648A759AA7BE1550412BF6B6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZZ1_R2R_I386A_LOAD_DAT" Role="FromRole_assoc_891F9BBB648A759AA7BE1550412BF6B6"/>
+                    <End EntitySet="I_CurrencyText" Role="ToRole_assoc_891F9BBB648A759AA7BE1550412BF6B6"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_3C21B854FCAED6380A4CC8C95E5688EC" Association="ZZ1_R2R_I386A_LOAD_DAT_CDS.assoc_3C21B854FCAED6380A4CC8C95E5688EC" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZZ1_R2R_I386A_LOAD_DAT" Role="FromRole_assoc_3C21B854FCAED6380A4CC8C95E5688EC"/>
+                    <End EntitySet="I_Currency" Role="ToRole_assoc_3C21B854FCAED6380A4CC8C95E5688EC"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_CurrencyTextType/Language" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Language"/>
+                        <PropertyValue Property="CollectionPath" String="I_Language"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Language"/>
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_CurrencyTextType/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="I_Currency"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Currency"/>
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZZ1_R2R_I386A_LOAD_DAT_CDS.ZZ1_R2R_I386A_LOAD_DATType/AMOUNT_C" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Currency"/>
+                        <PropertyValue Property="CollectionPath" String="I_Currency"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="AMOUNT_C"/>
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZZ1_R2R_I386A_LOAD_DAT_CDS.ZZ1_R2R_I386A_LOAD_DAT_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZZ1_R2R_I386A_LOAD_DAT_CDS.I_CurrencyType/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.UnitSpecificScale" Path="Decimals"/>
+            </Annotations>
+            <atom:link rel="self" href="https://d1r.devpp.network.shc:8443/sap/opu/odata/sap/ZZ1_R2R_I386A_LOAD_DAT_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://d1r.devpp.network.shc:8443/sap/opu/odata/sap/ZZ1_R2R_I386A_LOAD_DAT_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
