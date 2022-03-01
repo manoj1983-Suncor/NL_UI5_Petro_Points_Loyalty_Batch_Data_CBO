@@ -5,7 +5,7 @@
     {
       "source": "^/sap/(.*)$",
       "target": "/sap/$1",
-      "destination": "ppd1r120",
+      "destination": "S4HD",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
